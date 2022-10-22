@@ -1,0 +1,70 @@
+::placeholder {
+  color: #666;
+}
+
+::selection {
+  background-color: #27d16f;
+  color: #fff;
+}
+
+input,
+textarea {
+  outline: none;
+}
+input:focus:required:invalid,
+textarea:focus:required:invalid {
+  border-color: red;
+}
+input:required:valid,
+textarea:required:valid {
+  border-color: green;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #fff;
+  min-width: 320px;
+  position: relative;
+  overflow-x: hidden;
+  background: #0e263e;
+}
+
+.home-header {
+  background-color: #0e263e;
+  height: 100vh;
+  background-image: url(../images/dist/bg.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.top-line {
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  width: 100%;
+}
+
+.my-logo {
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.my-logo:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.my-logo img {
+  width: 25px;
+  height: auto;
+  margin-right: 4px;
+}
+.my-logo .logo-ligth-text {
+  font-weight: 200;
+}
