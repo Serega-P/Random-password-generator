@@ -1,11 +1,5 @@
-// // Import jQuery module (npm i jquery)
-// import $ from 'jquery'
-// window.jQuery = $
 const $ = {};
 window.$ = $;
-
-// // Import vendor jQuery plugin example (not module)
-// require('~/app/libs/mmenu/dist/mmenu.js')
 
 document.addEventListener('DOMContentLoaded', () => {
   const symbols = [
@@ -103,9 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   $.generator = function (options) {
-    const pswInpuy = document.getElementById('psw'),
+    const pswInput = document.getElementById('psw'),
       slider = document.getElementById('selectorpassword'),
-      lengthpsw = document.getElementById('lengthpsw'),
+      lengthPsw = document.getElementById('lengthPsw'),
       inputs = document.getElementById('checkboxs').getElementsByTagName('input'),
       inputsBox = document.getElementById('checkboxs'),
       copyPswBtn = document.getElementById('copyPswBtn'),
@@ -118,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.length = 0;
     };
 
-    const powerPsw = function (pwr) {
+    const powerPsw = (pwr) => {
       if (pwr <= 6) {
         for (let i = 0; i < badgePower.length; i++) {
           badgePower[i].innerHTML = 'VERY WEAK';
@@ -144,19 +138,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //////	Show password
 
-    const showPassword = function (psw) {
+    const showPassword = (psw) => {
       powerPsw(slider.value);
-      pswInpuy.textContent = '';
+      pswInput.textContent = '';
       psw.forEach((elem, indx) => {
         setTimeout(() => {
-          pswInpuy.textContent += elem;
+          pswInput.textContent += elem;
         }, 15 * indx);
       });
     };
 
     //////	 Type password
 
-    const typePassword = function (arr) {
+    const typePassword = (arr) => {
       let inputs = [...arr];
       const type = [];
       inputs.forEach((input) => {
@@ -171,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //////	Create password
 
-    const createPassword = function (len, symbols) {
+    const createPassword = (len, symbols) => {
       password.clear();
       for (let i = 0; i < len; i++) {
         password.push(symbols[`${random(0, symbols.length - 1)}`]);
@@ -179,8 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return showPassword(password);
     };
 
-    slider.oninput = function (evt) {
-      lengthpsw.innerHTML = this.value;
+    slider.oninput = (evt) => {
+      lengthPsw.innerHTML = this.value;
     };
 
     slider.addEventListener('change', function () {
@@ -189,10 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //////  last input is checked
 
-    const checkeds = function (inputs) {
+    const checkLastCheckBoc = (inputs) => {
       let result = [];
-      Array.from(inputs).forEach(function (chck) {
-        if (chck.checked) {
+      Array.from(inputs).forEach((check) => {
+        if (check.checked) {
           result.push('1');
         }
       });
@@ -201,9 +195,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //////  inputs event listener
 
-    Array.from(inputs).forEach(function (chck) {
-      chck.addEventListener('change', function (e) {
-        if (checkeds([...inputs]) === 0) {
+    Array.from(inputs).forEach((check) => {
+      check.addEventListener('change', (e) => {
+        if (checkLastCheckBoc([...inputs]) === 0) {
           return (e.target.checked = true);
         }
         createPassword(slider.value, typePassword(inputs));
@@ -220,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ////// Show lable copu
 
-    const lableCopu = function () {
+    const lableCopu = () => {
       let box = document.getElementById('inputpsw'),
         first = document.getElementById('textpsw'),
         label = document.createElement('div');
@@ -254,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
       lableCopu();
     }
 
-    copyPswBtn.addEventListener('click', function (e) {
+    copyPswBtn.addEventListener('click', (e) => {
       copyToClipboard(password);
       copyPswBtn.classList.add('copu');
       setTimeout(() => {
@@ -266,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
       slider.value = options.val;
       slider.min = options.min;
       slider.max = options.max;
-      lengthpsw.innerHTML = options.val;
+      lengthPsw.innerHTML = options.val;
       createPassword(slider.value, typePassword(inputs));
     };
     init();
