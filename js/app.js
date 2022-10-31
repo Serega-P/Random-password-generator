@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.length = 0;
     };
 
-    const powerPsw = (pwr) => {
+    const strongPsw = (pwr) => {
       if (pwr <= 6) {
         for (let i = 0; i < badgePower.length; i++) {
           badgePower[i].innerHTML = 'VERY WEAK';
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //////	Show password
 
     const showPassword = (psw) => {
-      powerPsw(slider.value);
+      strongPsw(slider.value);
       pswInput.textContent = '';
       psw.forEach((elem, indx) => {
         setTimeout(() => {
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return showPassword(password);
     };
 
-    slider.oninput = (evt) => {
+    slider.oninput = function (evt) {
       lengthPsw.innerHTML = this.value;
     };
 
